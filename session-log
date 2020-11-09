@@ -1,0 +1,54 @@
+/* 1. Registration */
+// Request
+POST http://karo-dev.ru:3000/api/users
+{
+  "user":{
+    "username": "LoginovIlya",
+    "email": "linsykt@gmail.com",
+    "password": "Ode2MyFamily"
+  }
+}
+// Response
+{
+    "user": {
+        "username": "loginovilya",
+        "email": "linsykt@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTliZjAxNjk5ZDE2MDMyNDZmZDdkMCIsInVzZXJuYW1lIjoibG9naW5vdmlseWEiLCJleHAiOjE2MTAxNDQwMDIsImlhdCI6MTYwNDk2MDAwMn0.MyXl2b1fE4YkWOMPX70v38pt2sTzsULPG_9ngudv2sY"
+    }
+}
+
+/* 2. Authentication */
+// Request
+POST http://karo-dev.ru:3000/api/users/login
+{
+  "user":{
+    "email": "linsykt@gmail.com",
+    "password": "Ode2MyFamily"
+  }
+}
+// Response
+{
+    "user": {
+        "username": "loginovilya",
+        "email": "linsykt@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTliZjAxNjk5ZDE2MDMyNDZmZDdkMCIsInVzZXJuYW1lIjoibG9naW5vdmlseWEiLCJleHAiOjE2MTAxNDQ0NjUsImlhdCI6MTYwNDk2MDQ2NX0.JZNXPTWACJ87G7PL-ZluU_eq93RM2dZsYSwXPXjsUvs"
+    }
+}
+
+/* 3. Get Current User */
+// Request
+GET http://karo-dev.ru:3000/api/user
+// query parameter: 
+secret = 42
+// Authentication Header:
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTliZjAxNjk5ZDE2MDMyNDZmZDdkMCIsInVzZXJuYW1lIjoibG9naW5vdmlseWEiLCJleHAiOjE2MTAxNDQwMDIsImlhdCI6MTYwNDk2MDAwMn0.MyXl2b1fE4YkWOMPX70v38pt2sTzsULPG_9ngudv2sY
+// Response
+{
+    "user": {
+        "username": "loginovilya",
+        "email": "linsykt@gmail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTliZjAxNjk5ZDE2MDMyNDZmZDdkMCIsInVzZXJuYW1lIjoibG9naW5vdmlseWEiLCJleHAiOjE2MTAxNDUwNzksImlhdCI6MTYwNDk2MTA3OX0.EbPZ2qo5AM2gZMTH67Yr2PnPVITzB-i9KRaatOxoCOk"
+    }
+}
+// Response Header
+X-SuperSecretCode: Alakazam 1711
